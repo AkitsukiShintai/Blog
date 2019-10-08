@@ -8,22 +8,24 @@
 
 <title>
   
-    Curve Algorithm
+    Moment Shadow Mapping
   
 </title>
 
-<meta name="description" content="Update:Full Version:   ////////////////////////////////////////////////////////////////////   Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorit">
-<meta name="keywords" content="Math,Unity">
+<meta name="description" content="Reference Moment Shadow Mapping(MSM)Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process.">
+<meta name="keywords" content="Vulkan,Graphics">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Curve Algorithm">
-<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/03/21/Cureve-Algorithm/index.html">
+<meta property="og:title" content="Moment Shadow Mapping">
+<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/10/08/Moment-Shadow-Mapping/index.html">
 <meta property="og:site_name" content="Pikachu~">
-<meta property="og:description" content="Update:Full Version:   ////////////////////////////////////////////////////////////////////   Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorit">
+<meta property="og:description" content="Reference Moment Shadow Mapping(MSM)Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-08T21:53:40.403Z">
+<meta property="og:image" content="https://akitsukishintai.github.io/images/moment_shadow_mapping/moment%20shadow%20mapping.png">
+<meta property="og:updated_time" content="2019-10-08T22:21:51.571Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Curve Algorithm">
-<meta name="twitter:description" content="Update:Full Version:   ////////////////////////////////////////////////////////////////////   Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorit">
+<meta name="twitter:title" content="Moment Shadow Mapping">
+<meta name="twitter:description" content="Reference Moment Shadow Mapping(MSM)Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process.">
+<meta name="twitter:image" content="https://akitsukishintai.github.io/images/moment_shadow_mapping/moment%20shadow%20mapping.png">
 
 
   <link rel="alternative" href="/atom.xml" title="Pikachu~" type="application/atom+xml">
@@ -149,36 +151,59 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-Cureve-Algorithm" class="article article-type-post">
+          <article id="post-Moment-Shadow-Mapping" class="article article-type-post">
   
     <h1 class="article-header">
-      Curve Algorithm
+      Moment Shadow Mapping
     </h1>
   
   
+  <div class="article-gallery article-gallery-photos" itemscope itemtype="http://schema.org/ImageGallery">
+    
+      <figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href="/Blog/images/moment_shadow_mapping/moment shadow mapping.png" itemprop="contentUrl" rel="gallery_ck1ie6xpr0006lwueu2lrjme7" title style="background-image: url(/Blog/images/moment_shadow_mapping/moment shadow mapping.png)">
+          <img src="/Blog/images/moment_shadow_mapping/moment shadow mapping.png" itemprop="thumbnail" alt>
+        </a>
+        <figcaption itemprop="caption description"></figcaption>
+      </figure>
+    
+  </div>
+
 
   <div class="article-info">
     <span class="article-date">
-  2019-03-21
+  2019-10-08
 </span>
 
     
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Math/">Math</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Unity/">Unity</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Graphics/">Graphics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Vulkan/">Vulkan</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>Update:<br>Full Version:</p>
-<iframe src="//player.bilibili.com/player.html?aid=69482794&cid=120428684&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
-////////////////////////////////////////////////////////////////////
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u9ROj2iWJhc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p><a href="http://cg.cs.uni-bonn.de/aigaion2root/attachments/MomentShadowMapping.pdf" target="_blank" rel="noopener">Reference</a></p>
+<h3 id="Moment-Shadow-Mapping-MSM"><a href="#Moment-Shadow-Mapping-MSM" class="headerlink" title="Moment Shadow Mapping(MSM)"></a>Moment Shadow Mapping(MSM)</h3><p>Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process.</p>
+<a id="more"></a>
+<img src="/Blog/moment_shadow_mapping/origin.png"> 
+General shadow mapping.
+<img src="/Blog/moment_shadow_mapping/moment shadow mapping.png"> 
+Moment Shadow Mapping.
+<img src="/Blog/moment_shadow_mapping/PCF.png"> 
+PCF.
+<img src="/Blog/moment_shadow_mapping/PCF.png"> 
+Shwo blured shadow depth in scene.
 
-<p>Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorithm for Bezier Curves, Interpolating Polynomials,  Interpolating Splines, De Boor Algorithm for spline functions, De Boor Algorithm for Polynomial Curves and 3D Bezier curve.</p>
-<p><a href="https://www.youtube.com/watch?v=u9ROj2iWJhc" target="_blank" rel="noopener">Click to view original video</a></p>
+<img src="/Blog/moment_shadow_mapping/1.png"> 
+Before blur process.
+<img src="/Blog/moment_shadow_mapping/2.png"> 
+After blur process.
+
+
+<p>Compare PCF, MSM:<br>PCF also can get a smooth shadow, but without a nice transition from dark to bright.<br>MSM will cost more time on my computer. (PCF with 120 fps, MSM with 90 fps)</p>
 
   </div>
   <footer class="article-footer">

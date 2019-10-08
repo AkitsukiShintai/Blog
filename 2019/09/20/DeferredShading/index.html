@@ -8,22 +8,24 @@
 
 <title>
   
-    Curve Algorithm
+    Deferred Shading
   
 </title>
 
-<meta name="description" content="Update:Full Version:   ////////////////////////////////////////////////////////////////////   Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorit">
-<meta name="keywords" content="Math,Unity">
+<meta name="description" content="Update:Add normal mapping   /////////////////////////////////////////////////////////////////">
+<meta name="keywords" content="Vulkan,Rendering">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Curve Algorithm">
-<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/03/21/Cureve-Algorithm/index.html">
+<meta property="og:title" content="Deferred Shading">
+<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/09/20/DeferredShading/index.html">
 <meta property="og:site_name" content="Pikachu~">
-<meta property="og:description" content="Update:Full Version:   ////////////////////////////////////////////////////////////////////   Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorit">
+<meta property="og:description" content="Update:Add normal mapping   /////////////////////////////////////////////////////////////////">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-08T21:53:40.403Z">
+<meta property="og:image" content="https://akitsukishintai.github.io/images/deferred_shading/6.png">
+<meta property="og:updated_time" content="2019-10-08T21:50:53.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Curve Algorithm">
-<meta name="twitter:description" content="Update:Full Version:   ////////////////////////////////////////////////////////////////////   Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorit">
+<meta name="twitter:title" content="Deferred Shading">
+<meta name="twitter:description" content="Update:Add normal mapping   /////////////////////////////////////////////////////////////////">
+<meta name="twitter:image" content="https://akitsukishintai.github.io/images/deferred_shading/6.png">
 
 
   <link rel="alternative" href="/atom.xml" title="Pikachu~" type="application/atom+xml">
@@ -149,36 +151,57 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-Cureve-Algorithm" class="article article-type-post">
+          <article id="post-DeferredShading" class="article article-type-post">
   
     <h1 class="article-header">
-      Curve Algorithm
+      Deferred Shading
     </h1>
   
   
+  <div class="article-gallery article-gallery-photos" itemscope itemtype="http://schema.org/ImageGallery">
+    
+      <figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href="/Blog/images/deferred_shading/6.png" itemprop="contentUrl" rel="gallery_ck1ie6xpp0005lwued76jc20d" title data-size="1442x800" style="background-image: url(/Blog/images/deferred_shading/6.png)">
+          <img src="/Blog/images/deferred_shading/6.png" itemprop="thumbnail" alt>
+        </a>
+        <figcaption itemprop="caption description"></figcaption>
+      </figure>
+    
+  </div>
+
 
   <div class="article-info">
     <span class="article-date">
-  2019-03-21
+  2019-09-20
 </span>
 
     
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Math/">Math</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Unity/">Unity</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Rendering/">Rendering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Vulkan/">Vulkan</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>Update:<br>Full Version:</p>
-<iframe src="//player.bilibili.com/player.html?aid=69482794&cid=120428684&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
-////////////////////////////////////////////////////////////////////
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u9ROj2iWJhc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>Update:<br>Add normal mapping</p>
+<iframe src="//player.bilibili.com/player.html?aid=69205383&cid=119938448&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
+/////////////////////////////////////////////////////////////////
+<iframe src="https://player.bilibili.com/player.html?aid=68438172&cid=118611818&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
+<a id="more"></a>
 
-<p>Implement curve algorithm, including De Casteljau Algorithm for Polynomial Functions, De Casteljau Algorithm for Bezier Curves, Interpolating Polynomials,  Interpolating Splines, De Boor Algorithm for spline functions, De Boor Algorithm for Polynomial Curves and 3D Bezier curve.</p>
-<p><a href="https://www.youtube.com/watch?v=u9ROj2iWJhc" target="_blank" rel="noopener">Click to view original video</a></p>
+<img src="/Blog/images/deferred_shading/1.png"> 
+I used one direction light with direction (-1,-1,-1) and randomly generated 3000 point lights as lights. There are twenty spheres in this scene. Actually half of the spheres and the point lights are moving from bottom to top and repeat. Of course the shadow is here. I don’t implement sponza’s(the building) shadow because this so big that if it has a shadow you can’t clearly see the spheres’ shadow. Just the direction light produces shadow because of the performance of graphics card. I also implemented a movable camera to inspect my scene like this.
+<img src="/Blog/images/deferred_shading/2.png"> 
+    In addition, I used PCF to smooth the shadow. The lighting calculation uses Bling-Phong formular.
+
+<p>There are four render passes: shadow pass, offline pass, lighting pass and deferred pass. </p>
+<h3 id="Shadow-pass"><a href="#Shadow-pass" class="headerlink" title="Shadow pass:"></a>Shadow pass:</h3><p>Render the depth buffer of the 20 balls.</p>
+<h3 id="Offline-pass"><a href="#Offline-pass" class="headerlink" title="Offline pass:"></a>Offline pass:</h3><p>Render G-buffers, including position buffer (actually a z buffer), normal buffer, diffuse color buffer and<br>specular color buffer.</p>
+<h3 id="Lighting-pass"><a href="#Lighting-pass" class="headerlink" title="Lighting pass:"></a>Lighting pass:</h3><p>It’s a high-performance way to render 3000 lights and can render more. I rendered 3000 lights with about 200 fps in Debug Configuration. (my graphics card is GTX1070). The way is instead of rendering each pixel with each light, rendering points lights as sphere, and check if the pixel in same texture coordinate is in the sphere. If yes, do the lighting calculation, else pass. All lighting result will render at the same render target, that means opening color blending. I learned this from <a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading" target="_blank" rel="noopener">https://learnopengl.com/Advanced-Lighting/Deferred-Shading</a>. It called the way ‘Light Volumes’. </p>
+<h3 id="Deferred-pass"><a href="#Deferred-pass" class="headerlink" title="Deferred pass:"></a>Deferred pass:</h3><p>Using the G-buffers to do the shadow calculation and direction lighting calculation, add an ambient color. Finally add the color to the render target that the lighting pass used. That’s all.</p>
+<p>Normal Buffer<br><img src="/Blog/images/deferred_shading/3.png"><br>World Position Buffer<br><img src="/Blog/images/deferred_shading/4.png"><br>Depth Buffer<br><img src="/Blog/images/deferred_shading/5.png"><br>Limit position of point lights<br><img src="/Blog/images/deferred_shading/6.png"> </p>
 
   </div>
   <footer class="article-footer">
