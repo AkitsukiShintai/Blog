@@ -20,12 +20,17 @@
 <meta property="og:site_name" content="Pikachu~">
 <meta property="og:description" content="Reference Moment Shadow Mapping(MSM)Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://akitsukishintai.github.io/images/moment_shadow_mapping/moment%20shadow%20mapping.png">
-<meta property="og:updated_time" content="2019-10-08T22:26:21.436Z">
+<meta property="og:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/origin.png">
+<meta property="og:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/moment%20shadow%20mapping.png">
+<meta property="og:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/PCF.png">
+<meta property="og:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/shadow_depth.png">
+<meta property="og:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/1.png">
+<meta property="og:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/2.png">
+<meta property="og:updated_time" content="2019-10-08T22:34:03.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Moment Shadow Mapping">
 <meta name="twitter:description" content="Reference Moment Shadow Mapping(MSM)Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process.">
-<meta name="twitter:image" content="https://akitsukishintai.github.io/images/moment_shadow_mapping/moment%20shadow%20mapping.png">
+<meta name="twitter:image" content="https://akitsukishintai.github.io/Blog/images/moment_shadow_mapping/origin.png">
 
 
   <link rel="alternative" href="/atom.xml" title="Pikachu~" type="application/atom+xml">
@@ -158,17 +163,6 @@
     </h1>
   
   
-  <div class="article-gallery article-gallery-photos" itemscope itemtype="http://schema.org/ImageGallery">
-    
-      <figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <a href="/Blog/images/moment_shadow_mapping/moment shadow mapping.png" itemprop="contentUrl" rel="gallery_ck1iezfx1000bpcue6cypxoy8" title style="background-image: url(/Blog/images/moment_shadow_mapping/moment shadow mapping.png)">
-          <img src="/Blog/images/moment_shadow_mapping/moment shadow mapping.png" itemprop="thumbnail" alt>
-        </a>
-        <figcaption itemprop="caption description"></figcaption>
-      </figure>
-    
-  </div>
-
 
   <div class="article-info">
     <span class="article-date">
@@ -188,22 +182,27 @@
     <p><a href="http://cg.cs.uni-bonn.de/aigaion2root/attachments/MomentShadowMapping.pdf" target="_blank" rel="noopener">Reference</a></p>
 <h3 id="Moment-Shadow-Mapping-MSM"><a href="#Moment-Shadow-Mapping-MSM" class="headerlink" title="Moment Shadow Mapping(MSM)"></a>Moment Shadow Mapping(MSM)</h3><p>Blur shadow depth buffer and get a smooth shadow. Use computer shader to do the blur process. </p>
 <a id="more"></a>
-<img src="/Blog/moment_shadow_mapping/origin.png"> 
+<img src="/Blog/images/moment_shadow_mapping/origin.png"> 
 General shadow mapping.
-<img src="/Blog/moment_shadow_mapping/moment shadow mapping.png"> 
+<br><br>
+<img src="/Blog/images/moment_shadow_mapping/moment shadow mapping.png"> 
 Moment Shadow Mapping.
-<img src="/Blog/moment_shadow_mapping/PCF.png"> 
+<br><br>
+<img src="/Blog/images/moment_shadow_mapping/PCF.png"> 
 PCF.
-<img src="/Blog/moment_shadow_mapping/PCF.png"> 
+<br><br>
+<img src="/Blog/images/moment_shadow_mapping/shadow_depth.png"> 
 Shwo blured shadow depth in scene.
+<br><br>
 
-<img src="/Blog/moment_shadow_mapping/1.png"> 
+<h4 id="Computer-Shader-result"><a href="#Computer-Shader-result" class="headerlink" title="Computer Shader result:"></a>Computer Shader result:</h4><img src="/Blog/images/moment_shadow_mapping/1.png"> 
 Before blur process.
-<img src="/Blog/moment_shadow_mapping/2.png"> 
+<br><br>
+<img src="/Blog/images/moment_shadow_mapping/2.png"> 
 After blur process.
+<br><br>
 
-
-<p>Compare PCF, MSM:<br>PCF also can get a smooth shadow, but without a nice transition from dark to bright.<br>MSM will cost more time on my computer. (PCF with 120 fps, MSM with 90 fps)</p>
+<h4 id="Compare-PCF-MSM"><a href="#Compare-PCF-MSM" class="headerlink" title="Compare PCF, MSM:"></a>Compare PCF, MSM:</h4><p>PCF also can get a smooth shadow, but without a nice transition from dark to bright.<br>MSM will cost more time on my computer. (PCF with 120 fps, MSM with 90 fps)</p>
 
   </div>
   <footer class="article-footer">
