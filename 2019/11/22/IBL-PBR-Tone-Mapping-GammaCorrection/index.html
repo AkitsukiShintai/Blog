@@ -8,21 +8,24 @@
 
 <title>
   
-    Tag: Intership
+    IBL+PBR+Tone-Mapping+Gamma-Correction
   
 </title>
 
-<meta name="description" content="Game Programmer">
-<meta name="keywords" content="Game Development,Game Programmer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pikachu~">
-<meta property="og:url" content="https://akitsukishintai.github.io/Blog/tags/Intership/index.html">
+<meta name="description" content="IBL-Image based lightingAn HDR environment map to provide surround lighting. PBRA micro-facet BRDF to provide realistic surface lighting calculations Tone Mapping + Gamma CorrectionThe mapping of a Hi">
+<meta name="keywords" content="Graphics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IBL+PBR+Tone-Mapping+Gamma-Correction">
+<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/11/22/IBL-PBR-Tone-Mapping-GammaCorrection/index.html">
 <meta property="og:site_name" content="Pikachu~">
-<meta property="og:description" content="Game Programmer">
+<meta property="og:description" content="IBL-Image based lightingAn HDR environment map to provide surround lighting. PBRA micro-facet BRDF to provide realistic surface lighting calculations Tone Mapping + Gamma CorrectionThe mapping of a Hi">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://akitsukishintai.github.io/images/PBR_IBL/0.png">
+<meta property="og:updated_time" content="2019-11-22T19:21:29.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pikachu~">
-<meta name="twitter:description" content="Game Programmer">
+<meta name="twitter:title" content="IBL+PBR+Tone-Mapping+Gamma-Correction">
+<meta name="twitter:description" content="IBL-Image based lightingAn HDR environment map to provide surround lighting. PBRA micro-facet BRDF to provide realistic surface lighting calculations Tone Mapping + Gamma CorrectionThe mapping of a Hi">
+<meta name="twitter:image" content="https://akitsukishintai.github.io/images/PBR_IBL/0.png">
 
 
   <link rel="alternative" href="/atom.xml" title="Pikachu~" type="application/atom+xml">
@@ -148,58 +151,74 @@
       
         <div style="max-width: 1000px">
       
-          <h1>Intership</h1>
-
-
+          <article id="post-IBL-PBR-Tone-Mapping-GammaCorrection" class="article article-type-post">
+  
+    <h1 class="article-header">
+      IBL+PBR+Tone-Mapping+Gamma-Correction
+    </h1>
   
   
-    <div class="post-list">
-  
+  <div class="article-gallery article-gallery-photos" itemscope itemtype="http://schema.org/ImageGallery">
+    
+      <figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href="/Blog/images/PBR_IBL/0.png" itemprop="contentUrl" rel="gallery_ck3ai11jh0005usuevw4qrfrv" title data-size="384x216" style="background-image: url(/Blog/images/PBR_IBL/0.png)">
+          <img src="/Blog/images/PBR_IBL/0.png" itemprop="thumbnail" alt>
+        </a>
+        <figcaption itemprop="caption description"></figcaption>
+      </figure>
+    
+  </div>
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/Blog/2019/08/25/Something-done-during-internship/">
-  Something done during internship
-</a>
 
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/Blog/2019/08/25/Something-done-during-internship/"><span class="article-date">
-  2019-08-25
+  <div class="article-info">
+    <span class="article-date">
+  2019-11-22
 </span>
-</a>
-        
 
-        
+    
+
+    
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Game-Engine/">Game Engine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Intership/">Intership</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Unity/">Unity</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Graphics/">Graphics</a></li></ul>
 	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          <p>There are something I implemented during my internship.<br><img src="/Blog/images/texture array tools.gif"><br>Texture Array Build Tool.</p>
-<img src="/Blog/images/objectTerrainBlend.gif"> 
-Object blends with terrain, rendering effect.
-
-<img src="/Blog/images/water.gif"> 
-water, rendering effect.
+  </div>
+  <div class="article-entry">
+    <h3 id="IBL-Image-based-lighting"><a href="#IBL-Image-based-lighting" class="headerlink" title="IBL-Image based lighting"></a>IBL-Image based lighting</h3><p>An HDR environment map to provide surround lighting.</p>
+<h3 id="PBR"><a href="#PBR" class="headerlink" title="PBR"></a>PBR</h3><p>A micro-facet BRDF to provide realistic surface lighting calculations</p>
+<h3 id="Tone-Mapping-Gamma-Correction"><a href="#Tone-Mapping-Gamma-Correction" class="headerlink" title="Tone Mapping + Gamma Correction"></a>Tone Mapping + Gamma Correction</h3><p>The mapping of a High-Dynamic-Range image onto a Low-Dynamic-Range device. </p>
+<a id="more"></a>
+<p>Tone mapping, exposure and Gamma Correction:<br>Sky box color and BRDF result used tone mapping to convert color into [0,1] and transfer into gamma space.  I chose the exposure parameter as 2, and sRGB = pow(linear,1/2.2) as linear to gamma space conversion equation. Because color in HDR image is in linear space, I just do this calculation when output pixel color.<br><img src="/Blog/images/PBR_IBL/1.png"> <br><img src="/Blog/images/PBR_IBL/2.png"> <br><img src="/Blog/images/PBR_IBL/3.png"> <br><img src="/Blog/images/PBR_IBL/4.png"> </p>
+<p>The first one is without gamma correction, but has tone mapping.<br>The second is without gamma correction and tone mapping.<br>The thired is using 2.0 as exposure parameter (with gamma correction and tone mapping).<br>The forth is using 5.0 as exposure parameter (with gamma correction and tone mapping).<br><br><br></p>
+<iframe src="//player.bilibili.com/player.html?aid=69480541&cid=120426368&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe><br>Different Roughness.<br>
 <br><br>
-          <p>
-            <a href="/Blog/2019/08/25/Something-done-during-internship/">
-              Read More
-            </a>
-          </p>
-        
-      </div>
-    </div>
 
-  
-    </div>
-  
+<p><img src="/Blog/images/PBR_IBL/origin.png">origin image<br><img src="/Blog/images/PBR_IBL/irradiansmap.png">irradiance map<br>Use irradiance map as irradians. diffuse color = Kd/PI * irradians. The irrandians map is generated by spherical harmonics algorithm.</p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/Blog/images/cc/cc.png">
+      
+          <img src="/Blog/images/cc/by.png">
+        
+          <img src="/Blog/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
 
 
 
