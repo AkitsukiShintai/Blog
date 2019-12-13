@@ -8,24 +8,24 @@
 
 <title>
   
-    FMOD 3D Sound
+    Physics based Animation--Cloth
   
 </title>
 
-<meta name="description" content="Use FMOD to generate 3D sound effect in scene. Implement for my game engine.">
-<meta name="keywords" content="3D Sound Effect">
+<meta name="description" content="Cloth simulationThis project is to implemente physics based animation, cloth-like object interactive with other objects.  Ball interacts with the mesh.">
+<meta name="keywords" content="Animation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FMOD 3D Sound">
-<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/10/08/FMOD-3D-Sound/index.html">
+<meta property="og:title" content="Physics based Animation--Cloth">
+<meta property="og:url" content="https://akitsukishintai.github.io/Blog/2019/12/13/Physics-based-Animation-Cloth/index.html">
 <meta property="og:site_name" content="Pikachu~">
-<meta property="og:description" content="Use FMOD to generate 3D sound effect in scene. Implement for my game engine.">
+<meta property="og:description" content="Cloth simulationThis project is to implemente physics based animation, cloth-like object interactive with other objects.  Ball interacts with the mesh.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://akitsukishintai.github.io/images/fmod.png">
-<meta property="og:updated_time" content="2019-10-08T22:04:31.387Z">
+<meta property="og:image" content="https://akitsukishintai.github.io/images/Animation/cloth2.png">
+<meta property="og:updated_time" content="2019-12-13T20:17:42.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FMOD 3D Sound">
-<meta name="twitter:description" content="Use FMOD to generate 3D sound effect in scene. Implement for my game engine.">
-<meta name="twitter:image" content="https://akitsukishintai.github.io/images/fmod.png">
+<meta name="twitter:title" content="Physics based Animation--Cloth">
+<meta name="twitter:description" content="Cloth simulationThis project is to implemente physics based animation, cloth-like object interactive with other objects.  Ball interacts with the mesh.">
+<meta name="twitter:image" content="https://akitsukishintai.github.io/images/Animation/cloth2.png">
 
 
   <link rel="alternative" href="/atom.xml" title="Pikachu~" type="application/atom+xml">
@@ -151,18 +151,18 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-FMOD-3D-Sound" class="article article-type-post">
+          <article id="post-Physics-based-Animation-Cloth" class="article article-type-post">
   
     <h1 class="article-header">
-      FMOD 3D Sound
+      Physics based Animation--Cloth
     </h1>
   
   
   <div class="article-gallery article-gallery-photos" itemscope itemtype="http://schema.org/ImageGallery">
     
       <figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <a href="/Blog/images/fmod.png" itemprop="contentUrl" rel="gallery_ck44lfig50009x8uesz8k2l18" title style="background-image: url(/Blog/images/fmod.png)">
-          <img src="/Blog/images/fmod.png" itemprop="thumbnail" alt>
+        <a href="/Blog/images/Animation/cloth2.png" itemprop="contentUrl" rel="gallery_ck44lfige000kx8ue1jputm7w" title style="background-image: url(/Blog/images/Animation/cloth2.png)">
+          <img src="/Blog/images/Animation/cloth2.png" itemprop="thumbnail" alt>
         </a>
         <figcaption itemprop="caption description"></figcaption>
       </figure>
@@ -172,22 +172,30 @@
 
   <div class="article-info">
     <span class="article-date">
-  2019-10-08
+  2019-12-13
 </span>
 
     
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/3D-Sound-Effect/">3D Sound Effect</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Animation/">Animation</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>Use FMOD to generate 3D sound effect in scene. Implement for my game engine.</p>
-<iframe src="//player.bilibili.com/player.html?aid=69200434&cid=119931065&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
+    <h3 id="Cloth-simulation"><a href="#Cloth-simulation" class="headerlink" title="Cloth simulation"></a>Cloth simulation</h3><p>This project is to implemente physics based animation, cloth-like object interactive with other objects.</p>
+<iframe src="https://player.bilibili.com/player.html?aid=79159670&cid=120595924&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe><br>Ball interacts with the mesh.<br>
+<a id="more"></a>
 
+<ol>
+<li>Implemented RK4 to solve physics result per frame.</li>
+<li>Generate the grid mesh. Grid mesh is generated by code, that will add more information to each vertex: the closest 8 vertexes, the max distance of each vertexes.  This special data structure will used to resolve the spring force inside of the mesh.</li>
+<li>Resolve collision. I defined an struct ‘Point’ to represent all objects that will do collision detection.  Each Point contains all the information that will be used to do collision detection and RK4: force, mass, velocity, moment, radius and so on.  The grid will have n*n points. I created a sphere in the scene as the model to interact with mesh, the radius and position of the sphere can be changed.  I used friction = -unit(V) * dot(V,V) * k, it likes air friction.<br>For each frame, I do the collision resolve firstly, then calculate the spring force onto a vertex. Next, add friction, finally do RK4 to update position, rotation, velocity and all the physics information of the vertexes.</li>
+</ol>
+<img src="/Blog/images/Animation/Cloth1.png"> 
+<img src="/Blog/images/Animation/cloth3.png"> 
   </div>
   <footer class="article-footer">
     
